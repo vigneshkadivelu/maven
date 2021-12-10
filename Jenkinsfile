@@ -14,7 +14,6 @@ pipeline {
       }
     }
     }
-   stages {
 
     stage('Kaniko Build & Push Image') {
       steps {
@@ -29,8 +28,8 @@ pipeline {
         }
       }
     }  
-  }   
-       stage('Deploy App to Kubernetes') {     
+   
+   stage('Deploy App to Kubernetes') {     
       steps {
         container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
